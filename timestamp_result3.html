@@ -1,0 +1,45 @@
+
+<html>
+      <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+<link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.3/css/bootstrap.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/bootstrap/4.0.0-alpha.3/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="btn-group">
+</div>
+{{none_data_columns}} 这些站一个数据都没有<p>
+   
+输出说明:基站时间差误差落在范围内的概率大于0.8是优 大于0.7小于0.8是好 小于0.7是等级差<p>
+{% for key in result %}
+    基站{{ key }}的符合概率比例是{{result[key]}}
+    {% if result[key] < 0.8 %}
+            {% if result[key] > 0.7 %}
+        <button type="button" class="btn btn-info">好</button>
+            {% else %}
+        <button type="button" class="btn btn-danger">差</button>
+            {% endif %}
+    {% else %}
+       <button type="button" class="btn btn-success">优</button><p>
+    {% endif %}
+{% endfor %}
+ 
+
+<p>数据模式概况如下<p>
+{% for key in rate_pattern %}
+{{key}}   {{rate_pattern[key]}} <P>
+{% endfor %}
+<p>基站丢包率概况如下<p>
+{% for key in miss_result %}
+{{key}}   {{miss_result[key]}} <P>
+{% endfor %}
+
+
+
+
+</body>
+</html>
